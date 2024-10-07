@@ -1,28 +1,34 @@
 package com.example.dynamic.field.rendering.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "USER_DETAILS")
 public class UserDetails {
-	
+
 	@Id
 	@Column(name = "USER_NAME")
 	private String userName;
 
-    private String password;
-    
-    @ManyToOne
-    @JoinColumn(name = "roleId")
-    @JsonBackReference(value = "role-user-details") 
-    private Role role;
+	private String password;
+
+	@ManyToOne
+	@JoinColumn(name = "roleId")
+	@JsonBackReference(value = "role-user-details")
+	private Role role;
 
 	public String getUserName() {
 		return userName;
@@ -55,7 +61,7 @@ public class UserDetails {
 		this.role = role;
 	}
 
-    public UserDetails() {
-    	
-    }
+	public UserDetails() {
+
+	}
 }
