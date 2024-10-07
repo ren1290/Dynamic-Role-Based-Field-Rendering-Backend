@@ -18,7 +18,22 @@ public class UserInputService {
         return userInputRepository.findAll(); 
     }
 	
-    public void saveUserInputs(List<UserInputs> inputs) {
+	public List<UserInputs> getUserInputsByUserName(String userName) {
+	    return userInputRepository.findByUserName(userName);
+	}
+	
+	public void saveUserInputs(List<UserInputs> inputs) {
+        if (inputs == null || inputs.isEmpty()) return;
+
+        String userName = inputs.get(0).getUserName(); 
+
+        Integer maxRecordId = userInputRepository.findMaxRecordIdByUserName(userName);
+        int newRecordId = (maxRecordId == null) ? 1 : maxRecordId + 1; 
+
+        for (UserInputs input : inputs) {
+            input.setRecordId(newRecordId); 
+        }
+
         userInputRepository.saveAll(inputs);
     }
 }

@@ -12,21 +12,26 @@ import jakarta.persistence.Table;
 public class UserInputs {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
-    private Integer id; 
+    private Integer id;
+
+    @Column(name = "RECORD_ID")
+    private Integer recordId; // New field for RECORD_ID
 
     @Column(name = "USER_NAME")
     private String userName;
 
     @Column(name = "FIELD_ID")
-    private Integer fieldId; 
+    private Integer fieldId;
 
     @Column(name = "FIELD_VALUE")
     private String value;
 
-    public UserInputs(Integer id, String userName, Integer fieldId, String value) {
+    // Constructors
+    public UserInputs(Integer id, Integer recordId, String userName, Integer fieldId, String value) {
         this.id = id;
+        this.recordId = recordId; // Initialize recordId
         this.userName = userName;
         this.fieldId = fieldId;
         this.value = value;
@@ -35,12 +40,21 @@ public class UserInputs {
     public UserInputs() {
     }
 
+    // Getters and Setters
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getRecordId() {
+        return recordId;
+    }
+
+    public void setRecordId(Integer recordId) {
+        this.recordId = recordId;
     }
 
     public String getUserName() {
@@ -66,5 +80,4 @@ public class UserInputs {
     public void setValue(String value) {
         this.value = value;
     }
-
 }
