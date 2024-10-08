@@ -17,7 +17,7 @@ public class UserInputs {
     private Integer id;
 
     @Column(name = "RECORD_ID")
-    private Integer recordId; // New field for RECORD_ID
+    private Integer recordId; 
 
     @Column(name = "USER_NAME")
     private String userName;
@@ -28,10 +28,9 @@ public class UserInputs {
     @Column(name = "FIELD_VALUE")
     private String value;
 
-    // Constructors
     public UserInputs(Integer id, Integer recordId, String userName, Integer fieldId, String value) {
         this.id = id;
-        this.recordId = recordId; // Initialize recordId
+        this.recordId = recordId; 
         this.userName = userName;
         this.fieldId = fieldId;
         this.value = value;
@@ -40,7 +39,6 @@ public class UserInputs {
     public UserInputs() {
     }
 
-    // Getters and Setters
     public Integer getId() {
         return id;
     }
