@@ -1,7 +1,6 @@
 package com.example.dynamic.field.rendering.entity;
 
 import java.util.Set;
-
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -21,12 +20,15 @@ public class Fields {
     @Column(name = "FIELD_DESC")
     private String fieldDesc;
 
+    @Column(name = "FIELD_TYPE")
+    private String fieldType;
+
+    @Column(name = "OPTIONS") 
+    private String options;
+
     @OneToMany(mappedBy = "field")
     @JsonManagedReference(value = "field-role-fields")
     private Set<RoleFields> roleFields;
-
-    @Column(name = "FIELD_TYPE") 
-    private String fieldType;
 
     public Integer getFieldId() {
         return fieldId;
@@ -52,14 +54,6 @@ public class Fields {
         this.fieldDesc = fieldDesc;
     }
 
-    public Set<RoleFields> getRoleFields() {
-        return roleFields;
-    }
-
-    public void setRoleFields(Set<RoleFields> roleFields) {
-        this.roleFields = roleFields;
-    }
-
     public String getFieldType() {
         return fieldType;
     }
@@ -68,11 +62,28 @@ public class Fields {
         this.fieldType = fieldType;
     }
 
-    public Fields(Integer fieldId, String fieldName, String fieldDesc, String fieldType, Set<RoleFields> roleFields) {
+    public String getOptions() { // New getter for options
+        return options;
+    }
+
+    public void setOptions(String options) { // New setter for options
+        this.options = options;
+    }
+
+    public Set<RoleFields> getRoleFields() {
+        return roleFields;
+    }
+
+    public void setRoleFields(Set<RoleFields> roleFields) {
+        this.roleFields = roleFields;
+    }
+
+    public Fields(Integer fieldId, String fieldName, String fieldDesc, String fieldType, String options, Set<RoleFields> roleFields) {
         this.fieldId = fieldId;
         this.fieldName = fieldName;
         this.fieldDesc = fieldDesc;
-        this.fieldType = fieldType; 
+        this.fieldType = fieldType;
+        this.options = options; 
         this.roleFields = roleFields;
     }
 
