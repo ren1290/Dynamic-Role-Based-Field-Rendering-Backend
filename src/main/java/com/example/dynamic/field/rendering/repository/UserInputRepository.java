@@ -21,4 +21,8 @@ public interface UserInputRepository extends CrudRepository <UserInputs, Integer
 	@Modifying
     @Query("UPDATE UserInputs u SET u.value = :value WHERE u.recordId = :recordId AND u.userName = :userName AND u.fieldId = :fieldId")
     void updateUserInput(String value, int recordId, String userName, Integer fieldId);
+	
+	@Modifying
+    @Query("DELETE FROM UserInputs u WHERE u.recordId = :recordId")
+    void deleteByRecordId(@Param("recordId") int recordId);
 }
