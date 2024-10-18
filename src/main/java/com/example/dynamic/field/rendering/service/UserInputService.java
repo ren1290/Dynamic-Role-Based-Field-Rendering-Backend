@@ -1,12 +1,15 @@
 package com.example.dynamic.field.rendering.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.dynamic.field.rendering.entity.UserInputs;
 import com.example.dynamic.field.rendering.repository.UserInputRepository;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class UserInputService {
@@ -36,4 +39,16 @@ public class UserInputService {
 
         userInputRepository.saveAll(inputs);
     }
+	
+	@Transactional
+	public void updateUserInputs(String userName, int recordId, Map<Integer, String> updatedFields) {
+	    for (Map.Entry<Integer, String> entry : updatedFields.entrySet()) {
+	        Integer fieldId = entry.getKey(); // This should be of type Integer
+	        String fieldValue = entry.getValue(); // This should be of type String
+
+	        // Call the update method with correct parameter types and order
+	        userInputRepository.updateUserInput(fieldValue, recordId, userName, fieldId); // Ensure this line matches the method signature
+	    }
+	}
+
 }
