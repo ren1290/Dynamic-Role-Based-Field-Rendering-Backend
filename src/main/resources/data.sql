@@ -7,7 +7,7 @@ INSERT INTO Fields (FIELD_ID, FIELD_NAME, FIELD_DESC, FIELD_TYPE, OPTIONS) VALUE
 (3, 'Gender', 'Select Gender of the user', 'radio', '[{"value": "Male", "label": "Male"}, {"value": "Female", "label": "Female"}]'),
 (4, 'Designation', 'Designation of Regular/Admin user', 'text', NULL),
 (5, 'Phone', 'Phone number of Regular/Admin user', 'text', NULL),
-(6, 'Country', 'Select Country of the user', 'dropdown', '[{"value": "USA", "label": "United States"}, {"value": "CAN", "label": "Canada"}, {"value": "UK", "label": "United Kingdom"}]'),
+(6, 'Country', 'Select Country of the user', 'dropdown', '[{"value": "USA", "label": "United States"}, {"value": "Canada", "label": "Canada"}, {"value": "UK", "label": "United Kingdom"}]'),
 (7, 'Address', 'Address of Regular/Admin user', 'text', NULL);
 
 INSERT INTO USER_DETAILS (USER_NAME, password, ROLE_ID) VALUES ('userA', '123', 1);
